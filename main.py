@@ -7,7 +7,8 @@ HEADER_COLOR = (0, 204, 153)
 COUNT_BLOCKS = 25
 HEADER_MARGIN = 70
 MARGIN = 1
-size = [SIZE_BLOCK*COUNT_BLOCKS + 2 * SIZE_BLOCK + MARGIN*SIZE_BLOCK, 800]
+size = [SIZE_BLOCK*COUNT_BLOCKS + 2 * SIZE_BLOCK + MARGIN*SIZE_BLOCK,
+        SIZE_BLOCK*COUNT_BLOCKS + 2 * SIZE_BLOCK + MARGIN*SIZE_BLOCK + HEADER_MARGIN]
 
 
 
@@ -30,6 +31,6 @@ while True:
             else:
                 color = WHITE
             pygame.draw.rect(screen, color, (SIZE_BLOCK +column*SIZE_BLOCK + MARGIN*(column+1),
-                                             HEADER_MARGIN + row * SIZE_BLOCK + MARGIN*(row + 1), SIZE_BLOCK, SIZE_BLOCK))
+                                             HEADER_MARGIN + SIZE_BLOCK + row * SIZE_BLOCK + MARGIN*(row + 1), SIZE_BLOCK, SIZE_BLOCK))
 
     pygame.display.flip()
