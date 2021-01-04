@@ -28,7 +28,7 @@ def draw_block(color, row, column):
                                      HEADER_MARGIN + SIZE_BLOCK + row * SIZE_BLOCK + MARGIN * (row + 1), SIZE_BLOCK,
                                      SIZE_BLOCK))
 
-snake_block = [SnakeBlock(10,10)]
+snake_blocks = [SnakeBlock(10,9), SnakeBlock(10,10), SnakeBlock(10,11)]
 
 d_row = 0
 d_col = 1
@@ -63,11 +63,13 @@ while True:
                 color = WHITE
             draw_block(color, row, column)
 
-    for block in snake_block:
+    for block in snake_blocks:
         draw_block(SNAKE_COLOR, block.x, block.y)
-        block.x += d_row
-        block.y += d_col
 
+    head = snake_blocks[-1]
+    new_head = SnakeBlock(head.x + d_row, head.y + d_col)
+    snake_blocks.append(new_head)
+    snake_blocks.pop(0)
 
     pygame.display.flip()
     timer.tick(2)
