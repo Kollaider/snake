@@ -99,6 +99,7 @@ while True:
 
 
     if apple == head:
+        snake_blocks.append(apple)
         apple = get_random_block()
 
 
