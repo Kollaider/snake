@@ -16,6 +16,7 @@ print(size)
 
 screen = pygame.display.set_mode(size)      #creating window
 pygame.display.set_caption('Snake')         #setting caption
+timer = pygame.time.Clock()
 
 class SnakeBlock:
     def __init__(self, x, y):
@@ -28,6 +29,9 @@ def draw_block(color, row, column):
                                      SIZE_BLOCK))
 
 snake_block = [SnakeBlock(10,10)]
+
+d_row = 0
+d_col = 1
 
 while True:
 
@@ -48,6 +52,9 @@ while True:
 
     for block in snake_block:
         draw_block(SNAKE_COLOR, block.x, block.y)
+        block.x += d_row
+        block.y += d_col
 
 
     pygame.display.flip()
+    timer.tick(2)
