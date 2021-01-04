@@ -107,6 +107,7 @@ while True:
     for block in snake_blocks:
         draw_block(SNAKE_COLOR, block.x, block.y)
 
+    pygame.display.flip()
 
     if apple == head:
         total += 1
@@ -118,8 +119,14 @@ while True:
     d_col = buf_col
 
     new_head = SnakeBlock(head.x + d_row, head.y + d_col)
+
+    if new_head in snake_blocks:
+        print('crash yourself')
+        pygame.quit()
+        sys.exit()
+
     snake_blocks.append(new_head)
     snake_blocks.pop(0)
 
-    pygame.display.flip()
+
     timer.tick(3 + speed)
