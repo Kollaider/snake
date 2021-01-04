@@ -39,16 +39,16 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP and d_col != 0:
                 d_row = -1
                 d_col = 0
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN and d_col != 0:
                 d_row = 1
                 d_col = 0
-            elif event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT and d_row != 0:
                 d_row = 0
                 d_col = -1
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT and d_row != 0:
                 d_row = 0
                 d_col = 1
 
