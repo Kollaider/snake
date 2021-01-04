@@ -52,8 +52,8 @@ def draw_block(color, row, column):
 snake_blocks = [SnakeBlock(10,9), SnakeBlock(10,10), SnakeBlock(10,11)]
 apple = get_random_block()
 
-d_row = 0
-d_col = 1
+d_row = buf_row = 0
+d_col = buf_col = 1
 total = 0
 speed = 1
 
@@ -66,17 +66,17 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP and d_col != 0:
-                d_row = -1
-                d_col = 0
+                buf_row = -1
+                buf_col = 0
             elif event.key == pygame.K_DOWN and d_col != 0:
-                d_row = 1
-                d_col = 0
+                buf_row = 1
+                buf_col = 0
             elif event.key == pygame.K_LEFT and d_row != 0:
-                d_row = 0
-                d_col = -1
+                buf_row = 0
+                buf_col = -1
             elif event.key == pygame.K_RIGHT and d_row != 0:
-                d_row = 0
-                d_col = 1
+                buf_row = 0
+                buf_col = 1
 
     screen.fill(FRAME_COLOR)
     pygame.draw.rect(screen, HEADER_COLOR, [0, 0, size[0], HEADER_MARGIN])
@@ -114,6 +114,8 @@ while True:
         snake_blocks.append(apple)
         apple = get_random_block()
 
+    d_row = buf_row
+    d_col = buf_col
 
     new_head = SnakeBlock(head.x + d_row, head.y + d_col)
     snake_blocks.append(new_head)
