@@ -38,6 +38,19 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                d_row = -1
+                d_col = 0
+            elif event.key == pygame.K_DOWN:
+                d_row = 1
+                d_col = 0
+            elif event.key == pygame.K_LEFT:
+                d_row = 0
+                d_col = -1
+            elif event.key == pygame.K_RIGHT:
+                d_row = 0
+                d_col = 1
 
     screen.fill(FRAME_COLOR)
     pygame.draw.rect(screen, HEADER_COLOR, [0, 0, size[0], HEADER_MARGIN])
