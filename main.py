@@ -1,6 +1,8 @@
 import pygame
 import sys
 import random
+pygame.init()
+
 SIZE_BLOCK = 20
 FRAME_COLOR = (0, 255, 204)
 WHITE = (255, 255, 255)
@@ -20,7 +22,7 @@ print(size)
 screen = pygame.display.set_mode(size)      #creating window
 pygame.display.set_caption('Snake')         #setting caption
 timer = pygame.time.Clock()
-
+courier = pygame.font.SysFont('courier', 36,)
 class SnakeBlock:
     def __init__(self, x, y):
         self.x = x
@@ -52,6 +54,7 @@ apple = get_random_block()
 
 d_row = 0
 d_col = 1
+total = 0
 
 while True:
 
@@ -77,6 +80,9 @@ while True:
     screen.fill(FRAME_COLOR)
     pygame.draw.rect(screen, HEADER_COLOR, [0, 0, size[0], HEADER_MARGIN])
 
+    text_total = courier.render(f'Total: {total}', 0, WHITE)
+    screen.blit(text_total, (SIZE_BLOCK, SIZE_BLOCK))
+
     for row in range(COUNT_BLOCKS):
         for column in range(COUNT_BLOCKS):
             if (row + column)%2==0:
@@ -99,6 +105,7 @@ while True:
 
 
     if apple == head:
+        total += 1
         snake_blocks.append(apple)
         apple = get_random_block()
 
